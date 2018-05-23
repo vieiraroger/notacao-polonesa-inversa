@@ -19,9 +19,39 @@ string convertToPolonese(string exp) {
 
 		}
 
-	}*/
+	}
+	*/
 
-	return exp;
+	my_stack stack;
+	stack = newStack();
+
+	string polonese = "";
+	for(int i=0;i<exp.size();i++) {
+ 		
+
+		if(isOperator(exp[i])) {
+			if(isStackEmpty(stack)) {
+				stack = addStack(stack, exp[i]);
+			}
+			else if(testOperator(stack,exp[i])) {
+				stack = addStack(stack, exp[i]);
+			}
+			else {
+				polonese += exp[i];
+			}
+		}
+		//is a caracter or a number
+		else {
+			polonese += exp[i];
+		}
+	}
+
+	while(!isStackEmpty(stack)) {
+		polonese += stack.theStack[stack.top];
+		stack = removeStack(stack);
+	}
+
+	return polonese;
 }
 
 

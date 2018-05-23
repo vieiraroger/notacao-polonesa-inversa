@@ -7,24 +7,35 @@
 using namespace std;
 
 void menu(string exp);
+void commands();
 
 int main(int argc, char *argv[]) {
 	
-	string exp = "(A+B)*C"; //cba+*
+	string exp = "A+B*C"; //cba+*
 	cout << exp;
-	int cod=1;
+	int cod=0;
 	do {
 		system("cls");
 		menu(exp);
-/*
+		cout << "Codigo: " ;
+		cin >> cod;
+
 		switch(cod) {
 			case 0:
 				break;
 			case 1:
-				convertToPolonese(exp);
+				cin >> exp;
+				system("pause");
 				break;
 			case 2:
+				cout << convertToPolonese(exp) << endl;
+				
 				//calculatePolonese(exp);
+				system("pause");
+				break;
+			case 3:
+				commands();
+				system("pause");
 				break;
 			default:
 				cout << "Numero invalido!";
@@ -32,13 +43,7 @@ int main(int argc, char *argv[]) {
 				break;
 		}
 
-		cin >> cod;*/
-		char c;
-		cin >> c;
-		if(isOperator(c)) {
-			cout << "GOOD JOB ROGER";
-			system("pause");
-		}
+		
 
 	}while(cod != 0);
 	
@@ -48,8 +53,17 @@ int main(int argc, char *argv[]) {
 
 void menu(string exp) {
 	cout << "expressao atual = " << exp << endl;
-	cout << "1- Converter para notacao polonesa" << endl;
+	cout << "1- Digitar expressao" << endl;
 	cout << "2- Calcular Notacao" << endl;
+	cout << "3- Ajuda" << endl;
 	cout << "0- Sair do programa" << endl;
-	cout << "Codigo: ";
+}
+
+void commands() {
+	cout << "+ -> Soma" << endl;
+	cout << "- -> Subtração" << endl;
+	cout << "* -> Multiplicacao" << endl;
+	cout << "/ -> Divisao" << endl;
+	cout << "^ -> Potenciacao" << endl;
+	cout << "( ) -> Parenteses" << endl;
 }
