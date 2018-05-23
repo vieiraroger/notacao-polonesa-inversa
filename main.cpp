@@ -12,11 +12,11 @@ int main(int argc, char *argv[]) {
 	
 	string exp = "(A+B)*C"; //cba+*
 	cout << exp;
-	int cod=0;
+	int cod=1;
 	do {
 		system("cls");
 		menu(exp);
-
+/*
 		switch(cod) {
 			case 0:
 				break;
@@ -32,7 +32,13 @@ int main(int argc, char *argv[]) {
 				break;
 		}
 
-		cin >> cod;
+		cin >> cod;*/
+		char c;
+		cin >> c;
+		if(isOperator(c)) {
+			cout << "GOOD JOB ROGER";
+			system("pause");
+		}
 
 	}while(cod != 0);
 	

@@ -7,3 +7,5 @@
 using namespace std;
 
 string convertToPolonese(string exp);
+
+bool isOperator(char c);

@@ -2,7 +2,7 @@
 
 string convertToPolonese(string exp) {
 
-	my_stack stack = new my_stack();
+	//my_stack stack = new my_stack();
 
 	/*
 	//entrar no parenteses cetral
@@ -25,16 +25,16 @@ string convertToPolonese(string exp) {
 }
 
 
-//a + b * c
-//var = bc*
-//a+var
-//abc*+
-//a +
-str.find("*"); +1 -1
-
-+1 -1 *
-
-//(A+B)*C
-
-//(ab+)*c
-//cab+*
+bool isOperator(char c) {
+	switch(c) {
+		case '+':
+		case '-':
+		case '*':
+		case '/':
+		case '^':
+		case '(':
+			return true;
+			
+		default: return false;
+	}
+}
