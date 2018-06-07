@@ -58,7 +58,8 @@ bool testOperator(my_stack stack, char op) {
 int valueOperator(char op) {
 	
 	switch(op) {
-		
+		case ')':
+			return -1; //remove the stack until '('
 		case '+':
 		case '-':
 			return 1;

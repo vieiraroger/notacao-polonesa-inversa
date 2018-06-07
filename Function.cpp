@@ -36,6 +36,13 @@ string convertToPolonese(string exp) {
 			else if(testOperator(stack,exp[i])) {
 				stack = addStack(stack, exp[i]);
 			}
+			else if(valueOperator(exp[i]) == -1) {
+				while(stack.theStack[stack.top] != '(') {
+					polonese += stack.theStack[stack.top];
+					stack = removeStack(stack);
+				}
+				stack = removeStack(stack);
+			}
 			else {
 				polonese += exp[i];
 			}
@@ -63,6 +70,7 @@ bool isOperator(char c) {
 		case '/':
 		case '^':
 		case '(':
+		case ')':
 			return true;
 			
 		default: return false;
