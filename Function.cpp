@@ -33,9 +33,6 @@ string convertToPolonese(string exp) {
 			if(isStackEmpty(stack)) {
 				stack = addStack(stack, exp[i]);
 			}
-			else if(testOperator(stack,exp[i])) {
-				stack = addStack(stack, exp[i]);
-			}
 			else if(valueOperator(exp[i]) == -1) {
 				while(stack.theStack[stack.top] != '(') {
 					polonese += stack.theStack[stack.top];
@@ -43,8 +40,15 @@ string convertToPolonese(string exp) {
 				}
 				stack = removeStack(stack);
 			}
+			else if(testOperator(stack,exp[i])) {
+				stack = addStack(stack, exp[i]);
+			}
 			else {
-				polonese += exp[i];
+				while(!testOperator(stack,exp[i])) {
+					polonese += stack.theStack[stack.top];
+					stack = removeStack(stack);
+				}
+				stack = addStack(stack,exp[i]);
 			}
 		}
 		//is a caracter or a number

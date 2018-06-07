@@ -46,6 +46,11 @@ my_stack removeStack(my_stack stack) {
 }
 
 bool testOperator(my_stack stack, char op) {
+	//gambiarra BR from Brazil
+	//for doenst call valueOperator(NULL)
+	if(isStackEmpty(stack)) {
+		return true;
+	}
 	int value = valueOperator(op);
 	if(value > valueOperator(stack.theStack[stack.top]) || value == 0) {
 		return true;
