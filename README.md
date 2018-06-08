@@ -1,6 +1,25 @@
 # projeto-pic
-Projeto interdisciplinar do Curso de Ciências da Computação terceiro semestre 3. 
+Projeto interdisciplinar do Curso de Ciências da Computação, terceiro semestre. 
 
+## Sobre
+Esse projeto tem como objetivo utilizar conhecimentos adiquiritos em algumas disciplinas do terceiro semestre, sendo elas:
+* Programação II
+* Estrutura de dados I
+* PIC
 
-Links:
-* https://www.youtube.com/watch?v=LQ-iW8jm6Mk
+## Informações
+
+|Nome|Type|Limites|
+|--|--|--|
+|Expreção da equação (s) | string | 0 < s.size() < 5000|
+|Variavies e valores (n) | double | -1,7x10^308 < n < 1,7x10^308|
+
+|Sistema|Status|
+|--|--|
+|Windows|Working|
+|Linux|Not Tested|
+|Mac|Not Tested| 
+
+## Bibliografias
+* [Video 1](https://www.youtube.com/watch?v=LQ-iW8jm6Mk)
+* [Wikipedia](https://en.wikipedia.org/wiki/Reverse_Polish_notation)
