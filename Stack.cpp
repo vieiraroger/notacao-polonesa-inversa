@@ -17,13 +17,7 @@ char theStack[100];
 
 
 bool isStackEmpty(my_stack stack) {
-
-	if(stack.top == -1) {
-		return true;
-	}
-	else {
-		return false;
-	}
+	return stack.top == -1;
 }
 
 my_stack addStack(my_stack stack,char op) {
@@ -52,12 +46,7 @@ bool testOperator(my_stack stack, char op) {
 		return true;
 	}
 	int value = valueOperator(op);
-	if(value > valueOperator(stack.theStack[stack.top]) || value == 0) {
-		return true;
-	}
-	else {
-		return false;
-	}
+	return value > valueOperator(stack.theStack[stack.top]) || value == 0;
 }
 
 int valueOperator(char op) {
