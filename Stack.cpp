@@ -31,12 +31,11 @@ my_stack removeStack(my_stack stack) {
 		char op = stack.theStack[stack.top];
 		stack.theStack[stack.top] = ' ';
 		stack.top--;
-		return stack;
 	} else {
 		cout << "ERROR removeStack()" << endl;
 		system("pause");
-		return stack;
 	}
+	return stack;
 }
 
 bool testOperator(my_stack stack, char op) {
