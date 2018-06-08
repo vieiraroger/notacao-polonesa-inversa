@@ -13,6 +13,8 @@ int main(int argc, char *argv[]) {
 	
 	string exp = "A+B*C"; //cba+*
 	cout << exp;
+	double value;
+	string polonese ="";
 	int cod=0;
 	do {
 		system("cls");
@@ -28,9 +30,10 @@ int main(int argc, char *argv[]) {
 				system("pause");
 				break;
 			case 2:
-				cout << convertToPolonese(exp) << endl;
-				
-				//calculatePolonese(exp);
+				polonese = convertToPolonese(exp);
+				cout << "Versao polonesa inversa: " << polonese << endl;
+				value = calculatePolonese(polonese);
+				cout << "Apos o calculo: " << value << endl;
 				system("pause");
 				break;
 			case 3:
@@ -61,7 +64,7 @@ void menu(string exp) {
 
 void commands() {
 	cout << "+ -> Soma" << endl;
-	cout << "- -> Subtração" << endl;
+	cout << "- -> Subtracao" << endl;
 	cout << "* -> Multiplicacao" << endl;
 	cout << "/ -> Divisao" << endl;
 	cout << "^ -> Potenciacao" << endl;

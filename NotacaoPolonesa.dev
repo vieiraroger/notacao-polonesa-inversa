@@ -2,7 +2,7 @@
 FileName=NotacaoPolonesa.dev
 Name=NotacaoPolonesa
 Type=1
-Ver=1
+Ver=2
 ObjFiles=
 Includes=
 Libs=
@@ -28,7 +28,7 @@ CustomMakefile=
 IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
-CompilerSettings=000000000000000000000000000
+CompilerSettings=000000000000000000100000000
 UnitCount=5
 
 [VersionInfo]

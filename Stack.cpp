@@ -16,18 +16,18 @@ char theStack[100];
 */
 
 
-bool isStackEmpty(my_stack stack) {
+bool isStackEmptyChar(char_stack stack) {
 	return stack.top == -1;
 }
 
-my_stack addStack(my_stack stack,char op) {
+char_stack addStackChar(char_stack stack,char op) {
 	stack.top++;
 	stack.theStack[stack.top] = op;
 	return stack;
 }
 
-my_stack removeStack(my_stack stack) {
-	if(!isStackEmpty(stack)) {
+char_stack removeStackChar(char_stack stack) {
+	if(!isStackEmptyChar(stack)) {
 		char op = stack.theStack[stack.top];
 		stack.theStack[stack.top] = ' ';
 		stack.top--;
@@ -38,10 +38,10 @@ my_stack removeStack(my_stack stack) {
 	return stack;
 }
 
-bool testOperator(my_stack stack, char op) {
+bool testOperator(char_stack stack, char op) {
 	//gambiarra BR from Brazil
 	//for doenst call valueOperator(NULL)
-	if(isStackEmpty(stack)) {
+	if(isStackEmptyChar(stack)) {
 		return true;
 	}
 	int value = valueOperator(op);
@@ -75,9 +75,39 @@ int valueOperator(char op) {
 	}
 }
 
-my_stack newStack() {
-	my_stack stack;
+char_stack newStackChar() {
+	char_stack stack;
 	stack.top = -1;
 
 	return stack;
+}
+
+double_stack newStackDouble() {
+	double_stack stack;
+	stack.top = -1;
+
+	return stack;
+}
+
+double_stack addStackDouble(double_stack stack,double value) {
+	stack.top++;
+	stack.theStack[stack.top] = value;
+	return stack;
+}
+
+double_stack removeStackDouble(double_stack stack) {
+
+	if(!isStackEmptyDouble(stack)) {
+		stack.theStack[stack.top] = 0;
+		stack.top--;
+	} else {
+		cout << "ERROR removeStack()" << endl;
+		system("pause");
+	}
+
+	return stack;
+}
+
+bool isStackEmptyDouble(double_stack stack) {
+	return stack.top == -1;
 }
