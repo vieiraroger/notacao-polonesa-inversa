@@ -2,34 +2,19 @@
 
 string convertToPolonese(string exp) {
 
-	//my_stack stack = new my_stack();
-
-	/*
-	//entrar no parenteses cetral
-	int indexStart=-1, indexEnd=-1;
-	for(int i=0;i<exp.size;i++) {
-
-		if(exp[i] == "(") {
-			indexStart = i;
-		}
-
-		if(exp[i] == ')') {
-			indexEnd = i;
-			string sub = exp.substr(indexStart,indexEnd);
-
-		}
-
-	}
-	*/
-
 	char_stack stack;
 	stack = newStackChar();
 
+	bool integer = false;
+
 	string polonese = "";
 	for(int i=0;i<exp.size();i++) {
- 		
-
 		if(isOperator(exp[i])) {
+			
+			if(integer) {
+				integer = false;
+				polonese += ' '; //this will help to calculate the value
+			}	
 			if(isStackEmptyChar(stack)) {
 				stack = addStackChar(stack, exp[i]);
 			}
@@ -54,10 +39,20 @@ string convertToPolonese(string exp) {
 				stack = addStackChar(stack,exp[i]);
 			}
 		}
-		//is a caracter or a number
-		else {
+		//is a caracter
+		else if(isCharacter(exp[i])) {		
+			if(integer) {
+				integer = false;
+				polonese += ' '; //this will help to calculate the value
+			}
 			polonese += exp[i];
 			polonese += ' '; //this will help to calculate the value
+			
+		}
+		//is a number
+		else {
+			integer = true;
+			polonese += exp[i];
 		}
 	}
 
@@ -153,7 +148,6 @@ double calculatePolonese(string exp) {
 
 	}
 
-
 	return stack.theStack[stack.top];
 }
 
@@ -170,7 +164,6 @@ double calc(char op,double n1, double n2) {
 		case '^':
 			return 0;
 	}
-
 }
 
 bool isDecimal(char c) {

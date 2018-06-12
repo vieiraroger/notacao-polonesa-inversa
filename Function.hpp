@@ -16,5 +16,4 @@ bool isDecimal(char c);
 
 bool isCharacter(char c);
 
-
 double calc(char op,double n1, double n2);
