@@ -5,14 +5,16 @@ string convertToPolonese(string exp) {
 	char_stack stack;
 	stack = newStackChar();
 
-	bool integer = false;
+	bool myDouble = false;
 
 	string polonese = "";
+
+
 	for(int i=0;i<exp.size();i++) {
 		if(isOperator(exp[i])) {
 			
-			if(integer) {
-				integer = false;
+			if(myDouble) {
+				myDouble = false;
 				polonese += ' '; //this will help to calculate the value
 			}	
 			if(isStackEmptyChar(stack)) {
@@ -41,8 +43,8 @@ string convertToPolonese(string exp) {
 		}
 		//is a caracter
 		else if(isCharacter(exp[i])) {		
-			if(integer) {
-				integer = false;
+			if(myDouble) {
+				myDouble = false;
 				polonese += ' '; //this will help to calculate the value
 			}
 			polonese += exp[i];
@@ -51,12 +53,13 @@ string convertToPolonese(string exp) {
 		}
 		//is a number
 		else {
-			integer = true;
+			myDouble = true;
 			polonese += exp[i];
 		}
 	}
 
 	while(!isStackEmptyChar(stack)) {
+		polonese += ' '; //this will help to calculate the value
 		polonese += stack.theStack[stack.top];
 		polonese += ' '; //this will help to calculate the value
 		stack = removeStackChar(stack);
@@ -96,7 +99,7 @@ double calculatePolonese(string exp) {
 			cout << exp[i] << ": ";
 
 			//lower case
-			if(exp[i] - 'a' < 26 && exp[i] - 'a' >=0 ) {
+			if(exp[i] - 'a' < 26 && exp[i] - 'a' >= 0) {
 				cin >> variableValue[(exp[i] - 'a')];
 			}
 			//high case
@@ -106,7 +109,6 @@ double calculatePolonese(string exp) {
 			
 		}
 	}
-
 
 	for(int i=0;i<exp.size();i++) {
 
@@ -136,7 +138,34 @@ double calculatePolonese(string exp) {
 		}
 		//cheks if this is a decimal
 		else if(isDecimal(exp[i])) {
+			double decimal = (exp[i] - '0');
+			bool comma = false;
+			double multi = 10;
+			int j;
 
+			for(j=i + 1;exp[j] != ' ' && exp[j] != NULL;j++) {
+
+				if(exp[j] == '.') {
+					comma = true;
+					j++;
+				}
+
+				if(!comma) {
+					decimal = decimal*10;
+					decimal += (exp[j] - '0');
+				}
+				else {
+					double aux = (exp[j] - '0');
+					decimal += aux/multi;
+					multi = multi*10;
+				}
+				
+			}
+
+			i = j - 1;
+
+			stack = addStackDouble(stack,decimal);
+			
 		}
 		else if(exp[i] == ' ') {
 

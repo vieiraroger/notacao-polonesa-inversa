@@ -9,6 +9,7 @@ using namespace std;
 2 -> / and *
 3 -> ^
 4 -> () //restart to 0
+
 */
 
 typedef struct stack{
