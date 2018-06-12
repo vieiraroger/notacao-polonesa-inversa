@@ -1,4 +1,5 @@
 #include "Function.hpp"
+#include <cmath>
 
 string convertToPolonese(string exp) {
 
@@ -191,7 +192,7 @@ double calc(char op,double n1, double n2) {
 		case '/':
 			return n1/n2;
 		case '^':
-			return 0;
+			return pow(n1,n2);
 	}
 }
 
