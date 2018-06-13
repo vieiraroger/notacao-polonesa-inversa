@@ -30,18 +30,18 @@ Esse projeto tem como objetivo utilizar conhecimentos adquiridos em algumas disc
 * Ler arquivos input
 * Escrever arquivos output
 
-## Formato Input
+## Formato Input (file)
 Os inputs não passam por verificação se estão corretos.
 
-exprecao
-uma linha para cada variavel com seu respeqtivo valor
+> Expressão<br/>
+> Valores das variaveis<br/>
 
 Exemplo:
 
-A+C/D
-A: 10
-C: 30
-D: 2
+> A+C/D<br/>
+> A: 10<br/>
+> C: 30<br/>
+> D: 2<br/>
 
 
 ## Bibliografias
