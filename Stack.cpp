@@ -15,22 +15,33 @@ char theStack[100];
 
 */
 
+char_stack *newStackChar() {
+	char_stack *stack = NULL;
 
-bool isStackEmptyChar(char_stack stack) {
-	return stack.top == -1;
-}
-
-char_stack addStackChar(char_stack stack,char op) {
-	stack.top++;
-	stack.theStack[stack.top] = op;
 	return stack;
 }
 
-char_stack removeStackChar(char_stack stack) {
+
+bool isStackEmptyChar(char_stack *stack) {
+	return (stack == NULL);
+}
+
+char_stack *addStackChar(char_stack *stack,char op) {
+	
+	char_stack *new_stack = new char_stack;
+	new_stack->last = stack;
+	new_stack->value = op;
+
+
+	return new_stack;
+}
+
+char_stack *removeStackChar(char_stack *stack) {
 	if(!isStackEmptyChar(stack)) {
-		char op = stack.theStack[stack.top];
-		stack.theStack[stack.top] = ' ';
-		stack.top--;
+		char_stack *aux = stack;
+		stack = stack->last;
+		delete(aux);
+		
 	} else {
 		cout << "ERROR removeStack()" << endl;
 		system("pause");
@@ -38,14 +49,14 @@ char_stack removeStackChar(char_stack stack) {
 	return stack;
 }
 
-bool testOperator(char_stack stack, char op) {
+bool testOperator(char_stack *stack, char op) {
 	//gambiarra BR from Brazil
 	//for doenst call valueOperator(NULL)
 	if(isStackEmptyChar(stack)) {
-		return true;
+		return false;
 	}
 	int value = valueOperator(op);
-	return value > valueOperator(stack.theStack[stack.top]) || value == 0;
+	return value > valueOperator(stack->value) || value == 0;
 }
 
 int valueOperator(char op) {
@@ -58,7 +69,6 @@ int valueOperator(char op) {
 			return 1;
 
 		case '*':
-			return 2;
 			return 2;
 
 		case '^':
@@ -75,39 +85,37 @@ int valueOperator(char op) {
 	}
 }
 
-char_stack newStackChar() {
-	char_stack stack;
-	stack.top = -1;
+
+double_stack *newStackDouble() {
+	double_stack *stack = NULL;
 
 	return stack;
 }
 
-double_stack newStackDouble() {
-	double_stack stack;
-	stack.top = -1;
+double_stack *addStackDouble(double_stack *stack,double value) {
+	double_stack *new_stack = new double_stack;
+	new_stack->last = stack;
+	new_stack->value = value;
 
-	return stack;
+
+	return new_stack;
 }
 
-double_stack addStackDouble(double_stack stack,double value) {
-	stack.top++;
-	stack.theStack[stack.top] = value;
-	return stack;
-}
-
-double_stack removeStackDouble(double_stack stack) {
+double_stack *removeStackDouble(double_stack *stack) {
 
 	if(!isStackEmptyDouble(stack)) {
-		stack.theStack[stack.top] = 0;
-		stack.top--;
+		double_stack *aux = stack;
+		stack = stack->last;
+		delete(aux);
+		
 	} else {
 		cout << "ERROR removeStack()" << endl;
 		system("pause");
 	}
-
 	return stack;
 }
 
-bool isStackEmptyDouble(double_stack stack) {
-	return stack.top == -1;
+bool isStackEmptyDouble(double_stack *stack) {
+	return stack == NULL;
 }
+

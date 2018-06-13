@@ -3,7 +3,7 @@
 
 string convertToPolonese(string exp) {
 
-	char_stack stack;
+	char_stack *stack;
 	stack = newStackChar();
 
 	bool myDouble = false;
@@ -22,8 +22,8 @@ string convertToPolonese(string exp) {
 				stack = addStackChar(stack, exp[i]);
 			}
 			else if(valueOperator(exp[i]) == -1) {
-				while(stack.theStack[stack.top] != '(') {
-					polonese += stack.theStack[stack.top];
+				while(stack->value != '(') {
+					polonese += stack->value;
 					polonese += ' '; //this will help to calculate the value
 					stack = removeStackChar(stack);
 				}
@@ -35,7 +35,7 @@ string convertToPolonese(string exp) {
 			}
 			else {
 				while(!testOperator(stack,exp[i])) {
-					polonese += stack.theStack[stack.top];
+					polonese += stack->value;
 					polonese += ' '; //this will help to calculate the value
 					stack = removeStackChar(stack);
 				}
@@ -61,7 +61,7 @@ string convertToPolonese(string exp) {
 
 	while(!isStackEmptyChar(stack)) {
 		polonese += ' '; //this will help to calculate the value
-		polonese += stack.theStack[stack.top];
+		polonese += stack->value;
 		polonese += ' '; //this will help to calculate the value
 		stack = removeStackChar(stack);
 	}
@@ -71,7 +71,7 @@ string convertToPolonese(string exp) {
 
 double calculatePolonese(string exp) {
 	
-	double_stack stack;
+	double_stack *stack;
 	stack = newStackDouble();
 
 	double value = 0;
@@ -115,10 +115,10 @@ double calculatePolonese(string exp) {
 
 		if(isOperator(exp[i])) {
 			//cout << "I: " << i<< endl;
-			double value1 = stack.theStack[stack.top];
+			double value1 = stack->value;
 			//cout << stack.theStack[stack.top] << endl;
 			stack = removeStackDouble(stack);
-			double value2 = stack.theStack[stack.top];
+			double value2 = stack->value;
 			//cout << stack.theStack[stack.top] << endl;
 			stack = removeStackDouble(stack);
 			double calculated = calc(exp[i],value1,value2);
@@ -178,7 +178,7 @@ double calculatePolonese(string exp) {
 
 	}
 
-	return stack.theStack[stack.top];
+	return stack->value;
 }
 
 double calc(char op,double n1, double n2) {
