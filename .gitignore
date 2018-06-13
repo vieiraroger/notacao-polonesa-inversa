@@ -1,0 +1,4 @@
+# Compiled Files
+*.exe
+
+# TODO: Check if extensions .win .dev .layout is needed to run project or is configuration gived from IDE
