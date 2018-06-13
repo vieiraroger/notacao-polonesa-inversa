@@ -47,3 +47,4 @@ Exemplo:
 ## Bibliografias
 * [Video 1](https://www.youtube.com/watch?v=LQ-iW8jm6Mk)
 * [Wikipedia](https://en.wikipedia.org/wiki/Reverse_Polish_notation)
+* [Cpp File](http://www.cplusplus.com/doc/tutorial/files/)
