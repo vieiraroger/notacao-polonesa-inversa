@@ -14,11 +14,23 @@ Esse projeto tem como objetivo utilizar conhecimentos adiquiritos em algumas dis
 |Expreção da equação (s) | string | 0 < s.size() < 5000|
 |Variavies e valores (n) | double | -1,7x10^308 < n < 1,7x10^308|
 
-|Sistema|Status|
+## Operações
+|Nome|Simbolo Utilizado|
 |--|--|
-|Windows|Working|
-|Linux|Not Tested|
-|Mac|Not Tested| 
+| Soma | + |
+| Subtração | - |
+| Multiplicação | * |
+| Divisão | / |
+| Potenciação | ^ |
+
+
+
+## Funcionalidades
+* Operações com variaveis definidas
+* Operações com numeros decimais
+* Operações com variaveis definidas e numeros decimais
+* Ler arquivos input
+* Escrever arquivos output
 
 ## Bibliografias
 * [Video 1](https://www.youtube.com/watch?v=LQ-iW8jm6Mk)

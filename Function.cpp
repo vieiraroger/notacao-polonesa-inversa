@@ -121,7 +121,10 @@ double calculatePolonese(string exp) {
 			double value2 = stack->value;
 			//cout << stack.theStack[stack.top] << endl;
 			stack = removeStackDouble(stack);
-			double calculated = calc(exp[i],value1,value2);
+
+			//value2 'operation' value1
+
+			double calculated = calc(exp[i],value2,value1);
 
 			stack = addStackDouble(stack,calculated);
 		}
