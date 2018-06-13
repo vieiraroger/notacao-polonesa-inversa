@@ -71,6 +71,10 @@ string convertToPolonese(string exp) {
 
 double calculatePolonese(string exp,double values[], bool has_values) {
 	
+	//optional cout and system(cls)
+	system("cls");
+	cout << exp << endl;
+
 	double_stack *stack;
 	stack = newStackDouble();
 
@@ -190,6 +194,8 @@ double calculatePolonese(string exp,double values[], bool has_values) {
 
 	}
 
+	saveOutput(exp,stack->value);
+
 	return stack->value;
 }
 
@@ -270,33 +276,56 @@ void readInput(string file_name) {
     	myfile.close();
 	}
 	else {
-		cout << "Unable to open file";
+		cout << "Erro ao abrir arquivo";
 	}
 
+	double retur = calculatePolonese(polonese,variableValue,true);
 	
+  	return;
+}
 
-	
+void saveOutput(string polonese,double value) {
 
-	cout << "Versao Polonesa" << polonese << endl;
-	double retorno = calculatePolonese(polonese,variableValue,true);
+	showResult(polonese,value);
+	cout << " " << endl;
+	char test;
+	cout << "Deseja salvar o resultado em um arquivo?" << endl;
+	cout << "Digite 'S' para sim e 'N' para nao" << endl;
+	cin >> test;
+	if(test == 'S') {
+		createOutput(polonese,value);
+	}
 
-	string output = "output/" + file_name;
-	char otherFile[40] = "";
-	for(int i=0;i<output.size();i++) {
+	return; 
+}
 
-		otherFile[i] = output[i];
+void createOutput(string polonese,double value) {
+
+	string file_name;
+	cout << "Digite o nome do arquivo que deseja salvar:" << endl;
+	cin >> file_name;
+	file_name = "output/" + file_name;
+
+	char otherFile[100] = "";
+	for(int i=0;i<file_name.size();i++) {
+
+		otherFile[i] = file_name[i];
 		//cout << i << output[i] << otherFile[i];
 	}
-
 	ofstream outfile(otherFile);
-	cout << "Apos o calculo: "<< retorno << endl;
-
-	outfile << "Versao Polonesa" << polonese << endl;
-	outfile << "Apos o calculo: "<< retorno << endl;
-	outfile.close();
 	
-	cout << "Salvando output no arquvio " << otherFile << endl;
-  	return;
+
+	outfile << "Versao Polonesa: " << polonese << endl;
+	outfile << "Apos o calculo: "<< value << endl;
+	outfile.close();
+
+	return;
+}
+
+void showResult(string polonese,double value) {
+	system("cls");
+	cout << "Versao Polonesa: " << polonese << endl;
+	cout << "Apos o calculo: "<< value << endl;
 }
 
 double calc(char op,double n1, double n2) {
@@ -318,11 +347,9 @@ bool isDecimal(char c) {
 	return (c >= '0' && c <= '9');
 }
 
-
 bool isCharacter(char c) {
 	return ((c >= 'a' && c <= 'z')||(c >= 'A' && c <= 'Z'));
 }
-
 
 bool isOperator(char c) {
 	switch(c) {

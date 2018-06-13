@@ -34,9 +34,7 @@ int main(int argc, char *argv[]) {
 			//convert and calculate polonese
 			case 2:
 				polonese = convertToPolonese(exp);
-				cout << "Versao polonesa inversa: " << polonese << endl;
 				value = calculatePolonese(polonese,NULL,false);
-				cout << "Apos o calculo: " << value << endl;
 				system("pause");
 				break;
 			//open a input file and create a output file
@@ -83,4 +81,5 @@ void commands() {
 	cout << "/ -> Divisao" << endl;
 	cout << "^ -> Potenciacao" << endl;
 	cout << "( ) -> Parenteses" << endl;
+	cout << ". -> virgula (para numeros decimais)" << endl;
 }
