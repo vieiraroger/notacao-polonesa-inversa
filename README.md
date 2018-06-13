@@ -23,14 +23,26 @@ Esse projeto tem como objetivo utilizar conhecimentos adiquiritos em algumas dis
 | Divisão | / |
 | Potenciação | ^ |
 
-
-
 ## Funcionalidades
 * Operações com variaveis definidas
 * Operações com numeros decimais
 * Operações com variaveis definidas e numeros decimais
 * Ler arquivos input
 * Escrever arquivos output
+
+## Formato Input
+Os inputs não passam por verificação se estão corretos.
+
+exprecao
+uma linha para cada variavel com seu respeqtivo valor
+
+Exemplo:
+
+A+C/D
+A: 10
+C: 30
+D: 2
+
 
 ## Bibliografias
 * [Video 1](https://www.youtube.com/watch?v=LQ-iW8jm6Mk)

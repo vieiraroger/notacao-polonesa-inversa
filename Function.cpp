@@ -1,5 +1,5 @@
 #include "Function.hpp"
-#include <cmath>
+
 
 string convertToPolonese(string exp) {
 
@@ -69,7 +69,7 @@ string convertToPolonese(string exp) {
 	return polonese;
 }
 
-double calculatePolonese(string exp) {
+double calculatePolonese(string exp,double values[], bool has_values) {
 	
 	double_stack *stack;
 	stack = newStackDouble();
@@ -84,33 +84,42 @@ double calculatePolonese(string exp) {
 	// Z -> 51
 	double variableValue[52];
 
-	for(int i=0;i<52;i++) {
-		variableValue[i] = 0;
-	}
-
-	bool first = true; //show the header of variables input
-	for(int i=0;i<exp.size();i++) {
-
-		if(isCharacter(exp[i])) {
-			if(first) {
-				cout << "Escreva os valores para as respequitivas variaveis:" << endl;
-				first = false;
-			}
-
-			cout << exp[i] << ": ";
-
-			//lower case
-			if(exp[i] - 'a' < 26 && exp[i] - 'a' >= 0) {
-				cin >> variableValue[(exp[i] - 'a')];
-			}
-			//high case
-			else {
-				cin >> variableValue[26 + (exp[i] - 'A')];
-			}
-			
+	//Get caracter value
+	if(!has_values) {
+		for(int i=0;i<52;i++) {
+			variableValue[i] = NULL;
 		}
-	}
 
+		bool first = true; //show the header of variables input
+		for(int i=0;i<exp.size();i++) {
+
+			if(isCharacter(exp[i]) && variableValue[i] == NULL) {
+				if(first) {
+					cout << "Escreva os valores para as respequitivas variaveis:" << endl;
+					first = false;
+				}
+
+				cout << exp[i] << ": ";
+
+				//lower case
+				if(exp[i] - 'a' < 26 && exp[i] - 'a' >= 0) {
+					cin >> variableValue[(exp[i] - 'a')];
+				}
+				//high case
+				else {
+					cin >> variableValue[26 + (exp[i] - 'A')];
+				}
+				
+			}
+		}
+
+	}
+	else {
+		for(int i=0;i<52;i++) {
+			variableValue[i] = values[i];
+		} 
+	}
+	
 	for(int i=0;i<exp.size();i++) {
 
 		if(isOperator(exp[i])) {
@@ -182,6 +191,85 @@ double calculatePolonese(string exp) {
 	}
 
 	return stack->value;
+}
+
+void readInput(string file_name) {
+	string line;
+	string exp;
+	string polonese = "";
+	double variableValue[52];
+	ifstream myfile ("input/input.txt");
+	  	if (myfile.is_open()) {
+	    	getline(myfile,line);
+	      	cout << "Espressao: " << line << endl;
+	      	exp = line;
+	      	polonese = convertToPolonese(exp);
+
+
+
+			for(int i=0;i<52;i++) {
+				variableValue[i] = NULL;
+			}
+
+			for(int i=0;i<polonese.size();i++) {
+
+				if(isCharacter(polonese[i])) {
+					
+
+					getline(myfile,line);
+					cout << line << endl;
+					//A: 
+					//lower case
+					double decimal=0;
+					bool comma = false;
+					double multi = 10;
+					int j;
+
+					for(j=3;j<line.size();j++) {
+
+						if(line[j] == '.') {
+							comma = true;
+							j++;
+						}
+
+						if(!comma) {
+							decimal = decimal*10;
+							decimal += (line[j] - '0');
+						}
+						else {
+							double aux = (line[j] - '0');
+							decimal += aux/multi;
+							multi = multi*10;
+						}
+						
+					}
+		
+					if(line[0] - 'a' < 26 && line[0] - 'a' >= 0) {
+
+						variableValue[(line[0] - 'a')] = decimal;
+						
+						
+					}
+					//high case
+					else {
+						variableValue[26 + (line[0] - 'A')] = decimal;
+					}
+					
+				}
+			}
+
+
+	    	
+	    	myfile.close();
+		}
+		else {
+			cout << "Unable to open file";
+		}
+		cout << "Versao Polonesa" << polonese << endl;
+		double retorno = calculatePolonese(polonese,variableValue,true);
+		cout << "Apos o calculo: "<< retorno << endl;
+		cout << "Salvando output no arquvio " << "output/" << "output1.txt" << endl;
+  	return;
 }
 
 double calc(char op,double n1, double n2) {
