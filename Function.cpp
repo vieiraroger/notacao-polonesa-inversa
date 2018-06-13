@@ -197,78 +197,105 @@ void readInput(string file_name) {
 	string line;
 	string exp;
 	string polonese = "";
+	
+
+	// std::string to std::char
+	string input = "input/" + file_name;
+	char file[40];
+	for(int i=0;i<input.size();i++) {
+		file[i] = input[i];
+	}
+
 	double variableValue[52];
-	ifstream myfile ("input/input.txt");
-	  	if (myfile.is_open()) {
-	    	getline(myfile,line);
-	      	cout << "Espressao: " << line << endl;
-	      	exp = line;
-	      	polonese = convertToPolonese(exp);
 
+	ifstream myfile (file);
+	
+  	if (myfile.is_open()) {
 
+    	getline(myfile,line);
 
-			for(int i=0;i<52;i++) {
-				variableValue[i] = NULL;
-			}
+      	cout << "Espressao: " << line << endl;
+      	exp = line;
+      	polonese = convertToPolonese(exp);
 
-			for(int i=0;i<polonese.size();i++) {
+		for(int i=0;i<52;i++) {
+			variableValue[i] = NULL;
+		}
 
-				if(isCharacter(polonese[i])) {
-					
+		for(int i=0;i<polonese.size();i++) {
 
-					getline(myfile,line);
-					cout << line << endl;
-					//A: 
-					//lower case
-					double decimal=0;
-					bool comma = false;
-					double multi = 10;
-					int j;
+			if(isCharacter(polonese[i])) {
 
-					for(j=3;j<line.size();j++) {
+				getline(myfile,line);
+				cout << line << endl;
 
-						if(line[j] == '.') {
-							comma = true;
-							j++;
-						}
+				double decimal=0;
+				bool comma = false;
+				double multi = 10;
+				int j;
 
-						if(!comma) {
-							decimal = decimal*10;
-							decimal += (line[j] - '0');
-						}
-						else {
-							double aux = (line[j] - '0');
-							decimal += aux/multi;
-							multi = multi*10;
-						}
-						
+				for(j=3;j<line.size();j++) {
+
+					if(line[j] == '.') {
+						comma = true;
+						j++;
 					}
-		
-					if(line[0] - 'a' < 26 && line[0] - 'a' >= 0) {
 
-						variableValue[(line[0] - 'a')] = decimal;
-						
-						
+					if(!comma) {
+						decimal = decimal*10;
+						decimal += (line[j] - '0');
 					}
-					//high case
 					else {
-						variableValue[26 + (line[0] - 'A')] = decimal;
+						double aux = (line[j] - '0');
+						decimal += aux/multi;
+						multi = multi*10;
 					}
 					
 				}
+	
+				if(line[0] - 'a' < 26 && line[0] - 'a' >= 0) {
+
+					variableValue[(line[0] - 'a')] = decimal;
+					
+					
+				}
+				//high case
+				else {
+					variableValue[26 + (line[0] - 'A')] = decimal;
+				}
+				
 			}
-
-
-	    	
-	    	myfile.close();
 		}
-		else {
-			cout << "Unable to open file";
-		}
-		cout << "Versao Polonesa" << polonese << endl;
-		double retorno = calculatePolonese(polonese,variableValue,true);
-		cout << "Apos o calculo: "<< retorno << endl;
-		cout << "Salvando output no arquvio " << "output/" << "output1.txt" << endl;
+
+    	myfile.close();
+	}
+	else {
+		cout << "Unable to open file";
+	}
+
+	
+
+	
+
+	cout << "Versao Polonesa" << polonese << endl;
+	double retorno = calculatePolonese(polonese,variableValue,true);
+
+	string output = "output/" + file_name;
+	char otherFile[40] = "";
+	for(int i=0;i<output.size();i++) {
+
+		otherFile[i] = output[i];
+		//cout << i << output[i] << otherFile[i];
+	}
+
+	ofstream outfile(otherFile);
+	cout << "Apos o calculo: "<< retorno << endl;
+
+	outfile << "Versao Polonesa" << polonese << endl;
+	outfile << "Apos o calculo: "<< retorno << endl;
+	outfile.close();
+	
+	cout << "Salvando output no arquvio " << otherFile << endl;
   	return;
 }
 
