@@ -2,7 +2,7 @@
 Projeto interdisciplinar do Curso de Ciências da Computação, terceiro semestre. 
 
 ## Sobre
-Esse projeto tem como objetivo utilizar conhecimentos adiquiridos em algumas disciplinas do terceiro semestre, sendo elas:
+Esse projeto tem como objetivo utilizar conhecimentos adquiridos em algumas disciplinas do terceiro semestre, sendo elas:
 * Programação II
 * Estrutura de dados I
 * PIC
