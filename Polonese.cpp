@@ -372,9 +372,15 @@ bool verifyInput(string s) {
 	//false -> last was a operator
 	//true -> last was a element
 	bool eo = false;
+	bool comma = false;
 
 	for(int i=0;i<s.length();i++) {
-		
+		if(s[i] == '.' && comma) {
+			return false;
+		}
+		if(s[i] == '.') {
+			comma = true;
+		}		
 		//Case ()
 		if(s[i] == '(' ) {
             p1++;
