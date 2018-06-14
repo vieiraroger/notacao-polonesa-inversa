@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdlib.h>
 
-#include "Function.hpp"
+#include "Polonese.hpp"
 
 using namespace std;
 
@@ -16,6 +16,7 @@ int main(int argc, char *argv[]) {
 	double value;
 	string polonese ="";
 	string input;
+	string save;
 	int cod=0;
 	do {
 		system("cls");
@@ -28,8 +29,14 @@ int main(int argc, char *argv[]) {
 				break;
 			//get the new exp
 			case 1:
+				save = exp;
 				cin >> exp;
-				system("pause");
+
+				if(!verifyInput(exp)) {
+					cout << "Expressao invalida" << endl;
+					exp = save;
+					system("pause");
+				}
 				break;
 			//convert and calculate polonese
 			case 2:

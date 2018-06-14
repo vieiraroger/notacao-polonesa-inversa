@@ -1,20 +1,5 @@
 #include "Stack.hpp"
 
-
-/* 
-+ and -
-/ and *
-^
-()
-*/
-
-/* 
-
-int top;
-char theStack[100];
-
-*/
-
 char_stack *newStackChar() {
 	char_stack *stack = NULL;
 

@@ -2,7 +2,7 @@
 FileName=NotacaoPolonesa.dev
 Name=NotacaoPolonesa
 Type=1
-Ver=2
+Ver=1
 ObjFiles=
 Includes=
 Libs=
@@ -81,9 +81,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit4]
-FileName=Function.cpp
+FileName=Polonese.cpp
 CompileCpp=1
-Folder=
+Folder=NotacaoPolonesa
 Compile=1
 Link=1
 Priority=1000
@@ -91,9 +91,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit5]
-FileName=Function.hpp
+FileName=Polonese.hpp
 CompileCpp=1
-Folder=
+Folder=NotacaoPolonesa
 Compile=1
 Link=1
 Priority=1000
