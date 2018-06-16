@@ -213,11 +213,12 @@ void readInput(string file_name) {
 	}
 
 	double variableValue[52];
-
+	
 	ifstream myfile (file);
 	
+	
   	if (myfile.is_open()) {
-
+		
     	getline(myfile,line);
 
       	cout << "Espressao: " << line << endl;
@@ -277,6 +278,7 @@ void readInput(string file_name) {
 	}
 	else {
 		cout << "Erro ao abrir arquivo";
+		return;
 	}
 
 	double retur = calculatePolonese(polonese,variableValue,true);
@@ -373,17 +375,22 @@ bool verifyInput(string s) {
 	//true -> last was a element
 	bool eo = false;
 	bool comma = false;
-
-	for(int i=0;i<s.length();i++) {
-		if(isOperator(s[i]) {
+	int i;
+	for(i=0;i<s.length();i++) {
+		//cout << s[i] << endl;
+		//system("pause");
+		if(isOperator(s[i])||isCharacter(s[i])) {
 			comma = false;
 		}
 		if(s[i] == '.' && comma) {
 			return false;
 		}
 		if(s[i] == '.') {
+			cout << "teste";
+			system("pause");
 			comma = true;
-		}		
+		}
+				
 		//Case ()
 		if(s[i] == '(' ) {
             p1++;
@@ -394,13 +401,21 @@ bool verifyInput(string s) {
         if(p2 > p1) {
             return false;
         }
-
-        //Case EOE
+	}
+	for(int i=0;i<s.size();i++) {
+		//Case EOE
         if(s[i] == '(' || s[i] == ')') {
         	//ignore
         }
-        else if(!eo && (isCharacter(s[i]) || (isDecimal(s[i])) || (s[i] == ','))) {
+        else if(!eo && (isCharacter(s[i]))) {
         	eo = true;
+        }
+        else if(isDecimal(s[i])) {
+			int j;
+			for(j=i;isDecimal(s[j]) || s[j] == '.';j++) {
+				
+			}
+			i = j;
         }
         else if(eo && isOperator(s[i])) {
         	eo = false;
@@ -414,6 +429,7 @@ bool verifyInput(string s) {
 	if(!eo) {
 		return false;
 	}
+	
 	if(p1 != p2) {
         return false;    
     }
