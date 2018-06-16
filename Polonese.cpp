@@ -375,6 +375,9 @@ bool verifyInput(string s) {
 	bool comma = false;
 
 	for(int i=0;i<s.length();i++) {
+		if(isOperator(s[i]) {
+			comma = false;
+		}
 		if(s[i] == '.' && comma) {
 			return false;
 		}
