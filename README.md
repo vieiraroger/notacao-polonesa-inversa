@@ -8,11 +8,21 @@ Esse projeto tem como objetivo utilizar conhecimentos adquiridos em algumas disc
 * PIC
 
 ## Informações
+Algumas informações extras e especificas sobre o solftware.
 
+### Tempo de Complexidade
+|Função|Big O notation|
+|--|--|
+| convertToPolonese() | O(n) |
+| calculatePolonese() | O(n) |
+| verifyInput() | O(n) |
+
+### Limites
 |Nome|Type|Limites|
 |--|--|--|
-|Expressão da equação (s) | string | 0 < s.size() < 5000|
-|Variaveis e valores (n) | double | -1,7x10^308 < n < 1,7x10^308|
+| Expressão da equação (s) | string | 0 < s.size() < 2^32 |
+| Variaveis | double | -1.7x10^308 < n < 1.7x10^308 |
+| Valores | double | 0 <= n < 1.7x10^308 |
 
 ## Operações
 |Nome|Simbolo Utilizado|
@@ -24,6 +34,7 @@ Esse projeto tem como objetivo utilizar conhecimentos adquiridos em algumas disc
 | Potenciação | ^ |
 
 ## Funcionalidades
+* Testar se uma expreção matemática esta escrita de forma correta
 * Operações com variaveis definidas
 * Operações com numeros decimais
 * Operações com variaveis definidas e numeros decimais
