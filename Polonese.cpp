@@ -97,7 +97,7 @@ double calculatePolonese(string exp,double values[], bool has_values) {
 
 			if(isCharacter(exp[i]) && variableValue[i] == NULL) {
 				if(first) {
-					cout << "Escreva os valores para as respequitivas variaveis:" << endl;
+					cout << "Escreva os valores para as respequitivas variaveis: " << endl <<"(utilizar '- para negativos')" << endl;
 					first = false;
 				}
 
@@ -152,14 +152,18 @@ double calculatePolonese(string exp,double values[], bool has_values) {
 			}
 		}
 		//cheks if this is a decimal
-		else if(isDecimal(exp[i])) {
-			double decimal = (exp[i] - '0');
+		else if(isDecimal(exp[i]) || exp[i] == '!') {
+			double decimal = 0;
 			bool comma = false;
+			bool negative = false;
 			double multi = 10;
 			int j;
 
-			for(j=i + 1;exp[j] != ' ' && exp[j] != NULL;j++) {
-
+			for(j=i;exp[j] != ' ' && exp[j] != NULL;j++) {
+				if(exp[j] == '!') {
+					negative = true;
+					j++;
+				}
 				if(exp[j] == '.') {
 					comma = true;
 					j++;
@@ -178,6 +182,10 @@ double calculatePolonese(string exp,double values[], bool has_values) {
 			}
 
 			i = j - 1;
+
+			if(negative) {
+				decimal = (-1) * decimal;
+			}
 
 			stack = addStackDouble(stack,decimal);
 			
@@ -235,12 +243,16 @@ void readInput(string file_name) {
 				cout << line << endl;
 
 				double decimal=0;
+				bool negative = false;
 				bool comma = false;
 				double multi = 10;
 				int j;
 
 				for(j=3;j<line.size();j++) {
-
+					if(line[j] == '!') {
+						negative = true;
+						j++;
+					}
 					if(line[j] == '.') {
 						comma = true;
 						j++;
@@ -257,7 +269,9 @@ void readInput(string file_name) {
 					}
 					
 				}
-	
+				if(negative) {
+					decimal = (-1) * decimal; 
+				}
 				if(line[0] - 'a' < 26 && line[0] - 'a' >= 0) {
 
 					variableValue[(line[0] - 'a')] = decimal;
@@ -391,12 +405,13 @@ bool verifyInput(string s) {
         else if(!eo && (isCharacter(s[i]))) {
         	eo = true;
         }
-        else if(isDecimal(s[i])) {
+        else if(isDecimal(s[i]) || s[i] == '!') {
 			int j;
-			for(j=i;isDecimal(s[j]) || s[j] == '.';j++) {
+			for(j=i;isDecimal(s[j]) || (s[j] == '.'||  s[j] == '!');j++) {
 				
 			}
 			i = j;
+			eo = true;
         }
         else if(eo && isOperator(s[i])) {
         	eo = false;

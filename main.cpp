@@ -95,6 +95,7 @@ void commands() {
 	cout << "/ -> Divisao" << endl;
 	cout << "^ -> Potenciacao" << endl;
 	cout << "( ) -> Parenteses" << endl;
+	cout << "! -> Numero negativo direto na expressao (ex: !12 == -12)" << endl;
 	cout << ". -> virgula (para numeros decimais)" << endl;
 }
 
