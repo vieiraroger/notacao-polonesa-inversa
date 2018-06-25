@@ -1,6 +1,5 @@
 #include "Polonese.hpp"
 
-
 string convertToPolonese(string exp) {
 
 	char_stack *stack;
@@ -9,7 +8,6 @@ string convertToPolonese(string exp) {
 	bool myDouble = false;
 
 	string polonese = "";
-
 
 	for(int i=0;i<exp.size();i++) {
 		if(isOperator(exp[i])) {
@@ -99,7 +97,7 @@ double calculatePolonese(string exp,double values[], bool has_values) {
 
 			if(isCharacter(exp[i]) && variableValue[i] == NULL) {
 				if(first) {
-					cout << "Escreva os valores para as respequitivas variaveis:" << endl;
+					cout << "Escreva os valores para as respequitivas variaveis: " << endl <<"(utilizar '- para negativos')" << endl;
 					first = false;
 				}
 
@@ -154,14 +152,18 @@ double calculatePolonese(string exp,double values[], bool has_values) {
 			}
 		}
 		//cheks if this is a decimal
-		else if(isDecimal(exp[i])) {
-			double decimal = (exp[i] - '0');
+		else if(isDecimal(exp[i]) || exp[i] == '!') {
+			double decimal = 0;
 			bool comma = false;
+			bool negative = false;
 			double multi = 10;
 			int j;
 
-			for(j=i + 1;exp[j] != ' ' && exp[j] != NULL;j++) {
-
+			for(j=i;exp[j] != ' ' && exp[j] != NULL;j++) {
+				if(exp[j] == '!') {
+					negative = true;
+					j++;
+				}
 				if(exp[j] == '.') {
 					comma = true;
 					j++;
@@ -181,6 +183,10 @@ double calculatePolonese(string exp,double values[], bool has_values) {
 
 			i = j - 1;
 
+			if(negative) {
+				decimal = (-1) * decimal;
+			}
+
 			stack = addStackDouble(stack,decimal);
 			
 		}
@@ -194,7 +200,7 @@ double calculatePolonese(string exp,double values[], bool has_values) {
 
 	}
 
-	saveOutput(exp,stack->value);
+	saveOutput(exp,stack->value,variableValue);
 
 	return stack->value;
 }
@@ -237,12 +243,16 @@ void readInput(string file_name) {
 				cout << line << endl;
 
 				double decimal=0;
+				bool negative = false;
 				bool comma = false;
 				double multi = 10;
 				int j;
 
 				for(j=3;j<line.size();j++) {
-
+					if(line[j] == '!') {
+						negative = true;
+						j++;
+					}
 					if(line[j] == '.') {
 						comma = true;
 						j++;
@@ -259,7 +269,9 @@ void readInput(string file_name) {
 					}
 					
 				}
-	
+				if(negative) {
+					decimal = (-1) * decimal; 
+				}
 				if(line[0] - 'a' < 26 && line[0] - 'a' >= 0) {
 
 					variableValue[(line[0] - 'a')] = decimal;
@@ -286,22 +298,22 @@ void readInput(string file_name) {
   	return;
 }
 
-void saveOutput(string polonese,double value) {
+void saveOutput(string polonese,double value,double variableValue[]) {
 
-	showResult(polonese,value);
+	showResult(polonese,value,variableValue);
 	cout << " " << endl;
 	char test;
 	cout << "Deseja salvar o resultado em um arquivo?" << endl;
 	cout << "Digite 'S' para sim e 'N' para nao" << endl;
 	cin >> test;
 	if(test == 'S') {
-		createOutput(polonese,value);
+		createOutput(polonese,value,variableValue);
 	}
 
 	return; 
 }
 
-void createOutput(string polonese,double value) {
+void createOutput(string polonese,double value,double variableValue[]) {
 
 	string file_name;
 	cout << "Digite o nome do arquivo que deseja salvar:" << endl;
@@ -318,54 +330,36 @@ void createOutput(string polonese,double value) {
 	
 
 	outfile << "Versao Polonesa: " << polonese << endl;
+	for(int i=0;i<52;i++) {
+		if(variableValue[i] != NULL) {
+			if(i<26) {
+				outfile << (char)(i + 'a') << ": " << variableValue[i] << endl;
+			}
+			else {
+				outfile << (char)((i - 26) + 'A') << ": " << variableValue[i] << endl;
+			}
+		}
+	}
 	outfile << "Apos o calculo: "<< value << endl;
 	outfile.close();
 
 	return;
 }
 
-void showResult(string polonese,double value) {
+void showResult(string polonese,double value,double variableValue[]) {
 	system("cls");
 	cout << "Versao Polonesa: " << polonese << endl;
+	for(int i=0;i<52;i++) {
+		if(variableValue[i] != NULL) {
+			if(i<26) {
+				cout <<(char)(i + 'a') << ": " << variableValue[i] << endl;
+			}
+			else {
+				cout << (char)((i - 26) + 'A') << ": " << variableValue[i] << endl;
+			}
+		}
+	}
 	cout << "Apos o calculo: "<< value << endl;
-}
-
-double calc(char op,double n1, double n2) {
-	switch(op) {
-		case '+':
-			return n1 + n2;
-		case '-':
-			return n1 - n2;
-		case '*':
-			return n1*n2;
-		case '/':
-			return n1/n2;
-		case '^':
-			return pow(n1,n2);
-	}
-}
-
-bool isDecimal(char c) {
-	return (c >= '0' && c <= '9');
-}
-
-bool isCharacter(char c) {
-	return ((c >= 'a' && c <= 'z')||(c >= 'A' && c <= 'Z'));
-}
-
-bool isOperator(char c) {
-	switch(c) {
-		case '+':
-		case '-':
-		case '*':
-		case '/':
-		case '^':
-		case '(':
-		case ')':
-			return true;
-			
-		default: return false;
-	}
 }
 
 bool verifyInput(string s) {
@@ -402,6 +396,7 @@ bool verifyInput(string s) {
             return false;
         }
 	}
+
 	for(int i=0;i<s.size();i++) {
 		//Case EOE
         if(s[i] == '(' || s[i] == ')') {
@@ -410,12 +405,13 @@ bool verifyInput(string s) {
         else if(!eo && (isCharacter(s[i]))) {
         	eo = true;
         }
-        else if(isDecimal(s[i])) {
+        else if(isDecimal(s[i]) || s[i] == '!') {
 			int j;
-			for(j=i;isDecimal(s[j]) || s[j] == '.';j++) {
+			for(j=i;isDecimal(s[j]) || (s[j] == '.'||  s[j] == '!');j++) {
 				
 			}
 			i = j;
+			eo = true;
         }
         else if(eo && isOperator(s[i])) {
         	eo = false;

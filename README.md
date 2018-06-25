@@ -22,7 +22,7 @@ Algumas informações extras e especificas sobre o solftware.
 |--|--|--|
 | Expressão da equação (s) | string | 0 < s.size() < 2^32 |
 | Variaveis | double | -1.7x10^308 < n < 1.7x10^308 |
-| Valores | double | 0 <= n < 1.7x10^308 |
+| Valores | double | -1.7x10^308 < n < 1.7x10^308 |
 
 ## Operações
 |Nome|Simbolo Utilizado|

@@ -2,7 +2,7 @@
 FileName=NotacaoPolonesa.dev
 Name=NotacaoPolonesa
 Type=1
-Ver=1
+Ver=2
 ObjFiles=
 Includes=
 Libs=
@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=000000000000000000100000000
-UnitCount=5
+UnitCount=7
 
 [VersionInfo]
 Major=1
@@ -94,6 +94,26 @@ BuildCmd=
 FileName=Polonese.hpp
 CompileCpp=1
 Folder=NotacaoPolonesa
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit6]
+FileName=utils.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit7]
+FileName=utils.hpp
+CompileCpp=1
+Folder=
 Compile=1
 Link=1
 Priority=1000

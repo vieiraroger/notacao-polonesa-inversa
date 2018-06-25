@@ -8,9 +8,10 @@ using namespace std;
 
 void menu(string exp);
 void commands();
+void configs();
 
 int main(int argc, char *argv[]) {
-	
+	//variable declaration
 	string exp = "A+B*C"; //cba+*
 	cout << exp;
 	double value;
@@ -18,6 +19,7 @@ int main(int argc, char *argv[]) {
 	string input;
 	string save;
 	int cod=0;
+
 	do {
 		system("cls");
 		menu(exp);
@@ -58,13 +60,16 @@ int main(int argc, char *argv[]) {
 				commands();
 				system("pause");
 				break;
+			//system configs
+			case 5:
+				configs();
+				system("pause");
+				break;
 			default:
 				cout << "Numero invalido!";
 				system("pause");
 				break;
 		}
-
-		
 
 	}while(cod != 0);
 	
@@ -78,15 +83,28 @@ void menu(string exp) {
 	cout << "2- Calcular Notacao" << endl;
 	cout << "3- Importar arquivo de Input" << endl;
 	cout << "4- Ajuda" << endl;
+	cout << "5- Configuracoes do sistema" << endl;
 	cout << "0- Sair do programa" << endl;
 }
 
 void commands() {
+	system("cls");
 	cout << "+ -> Soma" << endl;
 	cout << "- -> Subtracao" << endl;
 	cout << "* -> Multiplicacao" << endl;
 	cout << "/ -> Divisao" << endl;
 	cout << "^ -> Potenciacao" << endl;
 	cout << "( ) -> Parenteses" << endl;
+	cout << "! -> Numero negativo direto na expressao (ex: !12 == -12)" << endl;
 	cout << ". -> virgula (para numeros decimais)" << endl;
+}
+
+void configs() {
+	system("cls");
+	cout << "Configuracoes do Sistema)" << endl;
+	cout << "Limites:" << endl;
+	cout << "-> 0 < expressao.size() 2^32" << endl;
+	cout << "-> -1.7x10^308 < variaveis < 1.7x10^308" << endl;
+	cout << "-> 0 <= numero < 1.7x10^308" << endl;
+	
 }
