@@ -52,7 +52,6 @@ bool testOperator(char_stack *stack, char op);
 //return the value of priority of an operator
 int valueOperator(char op);
 
-
 double_stack *newStackDouble();
 
 //say if one stack is empty or not

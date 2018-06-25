@@ -70,7 +70,6 @@ int valueOperator(char op) {
 	}
 }
 
-
 double_stack *newStackDouble() {
 	double_stack *stack = NULL;
 
@@ -103,4 +102,3 @@ double_stack *removeStackDouble(double_stack *stack) {
 bool isStackEmptyDouble(double_stack *stack) {
 	return stack == NULL;
 }
-
