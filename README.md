@@ -1,5 +1,5 @@
-# projeto-pic
-Projeto interdisciplinar do Curso de Ciências da Computação, terceiro semestre. 
+# Notação Polonesa
+Projeto interdisciplinar do Curso de Ciências da Computação, terceiro semestre.
 
 ## Sobre
 Esse projeto tem como objetivo utilizar conhecimentos adquiridos em algumas disciplinas do terceiro semestre, sendo elas:
@@ -9,13 +9,6 @@ Esse projeto tem como objetivo utilizar conhecimentos adquiridos em algumas disc
 
 ## Informações
 Algumas informações extras e especificas sobre o solftware.
-
-### Tempo de Complexidade
-|Função|Big O notation|
-|--|--|
-| convertToPolonese() | O(n) |
-| calculatePolonese() | O(n) |
-| verifyInput() | O(n) |
 
 ### Limites
 |Nome|Type|Limites|
@@ -34,12 +27,12 @@ Algumas informações extras e especificas sobre o solftware.
 | Potenciação | ^ |
 
 ## Funcionalidades
-* Testar se uma expreção matemática esta escrita de forma correta
-* Operações com variaveis definidas
-* Operações com numeros decimais
-* Operações com variaveis definidas e numeros decimais
-* Ler arquivos input
-* Escrever arquivos output
+- [X] Testar se uma expreção matemática esta escrita de forma correta
+- [X] Operações com variaveis definidas
+- [X] Operações com numeros decimais
+- [X] Operações com variaveis definidas e numeros decimais
+- [X] Ler arquivos input
+- [X] Escrever arquivos output
 
 ## Formato Input (file)
 Os inputs não passam por verificação se estão corretos.
@@ -47,12 +40,16 @@ Os inputs não passam por verificação se estão corretos.
 > Expressão<br/>
 > Valores das variaveis<br/>
 
-Exemplo:
+Exemplo: 
 
 > A+C/D<br/>
 > A: 10<br/>
 > C: 30<br/>
 > D: 2<br/>
+## Alunos
+* [Jackson Belloli](https://github.com/JacksonBelloli)
+* [Gilberto Topanotti](https://github.com/juniortopanotti)
+* [Roger Vieira](https://github.com/rogervieiraa)
 
 
 ## Bibliografias
