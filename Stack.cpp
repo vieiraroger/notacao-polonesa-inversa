@@ -54,7 +54,7 @@ int valueOperator(char op) {
 			return 1;
 
 		case '*':
-			case '/':
+		case '/':
 			return 2;
 
 		case '^':

@@ -32,7 +32,7 @@ string convertToPolonese(string exp) {
 
 			}
 			else {
-				while(!testOperator(stack,exp[i])) {
+				while(!testOperator(stack,exp[i]) && stack != NULL) {
 					polonese += stack->value;
 					polonese += ' '; //this will help to calculate the value
 					stack = removeStackChar(stack);
@@ -57,7 +57,7 @@ string convertToPolonese(string exp) {
 		}
 	}
 
-	while(!isStackEmptyChar(stack)) {
+	while(!isStackEmptyChar(stack) && stack != NULL) {
 		polonese += ' '; //this will help to calculate the value
 		polonese += stack->value;
 		polonese += ' '; //this will help to calculate the value
