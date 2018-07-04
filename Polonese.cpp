@@ -32,7 +32,7 @@ string convertToPolonese(string exp) {
 
 			}
 			else {
-				while(!testOperator(stack,exp[i]) && stack != NULL) {
+				while(stack != NULL && !testOperator(stack,exp[i]) ) {
 					polonese += stack->value;
 					polonese += ' '; //this will help to calculate the value
 					stack = removeStackChar(stack);
@@ -57,7 +57,7 @@ string convertToPolonese(string exp) {
 		}
 	}
 
-	while(!isStackEmptyChar(stack) && stack != NULL) {
+	while(!isStackEmptyChar(stack)) {
 		polonese += ' '; //this will help to calculate the value
 		polonese += stack->value;
 		polonese += ' '; //this will help to calculate the value
@@ -125,15 +125,11 @@ double calculatePolonese(string exp,double values[], bool has_values) {
 	for(int i=0;i<exp.size();i++) {
 
 		if(isOperator(exp[i])) {
-			//cout << "I: " << i<< endl;
+
 			double value1 = stack->value;
-			//cout << stack.theStack[stack.top] << endl;
 			stack = removeStackDouble(stack);
 			double value2 = stack->value;
-			//cout << stack.theStack[stack.top] << endl;
 			stack = removeStackDouble(stack);
-
-			//value2 'operation' value1
 
 			double calculated = calc(exp[i],value2,value1);
 
@@ -209,9 +205,8 @@ void readInput(string file_name) {
 	string line;
 	string exp;
 	string polonese = "";
-	
 
-	// std::string to std::char
+	// std::string to char[]
 	string input = "input/" + file_name;
 	char file[40];
 	for(int i=0;i<input.size();i++) {
@@ -368,11 +363,11 @@ bool verifyInput(string s) {
 	//false -> last was a operator
 	//true -> last was a element
 	bool eo = false;
+
 	bool comma = false;
 	int i;
 	for(i=0;i<s.length();i++) {
-		//cout << s[i] << endl;
-		//system("pause");
+
 		if(isOperator(s[i])||isCharacter(s[i])) {
 			comma = false;
 		}
@@ -380,8 +375,6 @@ bool verifyInput(string s) {
 			return false;
 		}
 		if(s[i] == '.') {
-			cout << "teste";
-			system("pause");
 			comma = true;
 		}
 				
@@ -410,7 +403,7 @@ bool verifyInput(string s) {
 			for(j=i;isDecimal(s[j]) || (s[j] == '.'||  s[j] == '!');j++) {
 				
 			}
-			i = j;
+			i = j - 1;
 			eo = true;
         }
         else if(eo && isOperator(s[i])) {

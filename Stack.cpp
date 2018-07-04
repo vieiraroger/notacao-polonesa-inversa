@@ -35,13 +35,11 @@ char_stack *removeStackChar(char_stack *stack) {
 }
 
 bool testOperator(char_stack *stack, char op) {
-	//gambiarra BR from Brazil
-	//for doenst call valueOperator(NULL)
 	if(isStackEmptyChar(stack)) {
 		return false;
 	}
 	int value = valueOperator(op);
-	return value > valueOperator(stack->value) || value == 0;
+	return (value > valueOperator(stack->value)) || (value == 0);
 }
 
 int valueOperator(char op) {
@@ -64,7 +62,7 @@ int valueOperator(char op) {
 			return 0;
 
 		default:
-			cout << "error in valueOperator()  " << op <<endl;
+			cout << "ERROR in valueOperator()  " << op <<endl;
 			system("pause");
 			return -1;	
 	}
@@ -93,7 +91,7 @@ double_stack *removeStackDouble(double_stack *stack) {
 		delete(aux);
 		
 	} else {
-		cout << "ERROR removeStack()" << endl;
+		cout << "ERROR in removeStack()" << endl;
 		system("pause");
 	}
 	return stack;

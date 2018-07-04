@@ -105,6 +105,6 @@ void configs() {
 	cout << "Limites:" << endl;
 	cout << "-> 0 < expressao.size() 2^32" << endl;
 	cout << "-> -1.7x10^308 < variaveis < 1.7x10^308" << endl;
-	cout << "-> 0 <= numero < 1.7x10^308" << endl;
+	cout << "-> !1.7x10^308 <= numero < 1.7x10^308" << endl;
 	
 }

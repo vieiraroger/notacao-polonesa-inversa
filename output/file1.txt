@@ -1,0 +1,5 @@
+Versao Polonesa: A C D  *  + 
+A: 2.5
+C: 2.5
+D: -4
+Apos o calculo: -7.5
