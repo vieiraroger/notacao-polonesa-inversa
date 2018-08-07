@@ -1,4 +1,4 @@
-#include "utils.hpp"
+#include "utils.h"
 
 bool isDecimal(char c) {
 	return (c >= '0' && c <= '9');

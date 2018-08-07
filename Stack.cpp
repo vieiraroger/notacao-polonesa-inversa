@@ -1,4 +1,4 @@
-#include "Stack.hpp"
+#include "Stack.h"
 
 char_stack *newStackChar() {
 	char_stack *stack = NULL;

@@ -1,4 +1,4 @@
-#include "Polonese.hpp"
+#include "Polonese.h"
 
 string convertToPolonese(string exp) {
 

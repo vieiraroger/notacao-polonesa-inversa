@@ -4,8 +4,8 @@
 #include <string>
 #include <fstream>
 #include <cmath>	
-#include "Stack.hpp"
-#include "utils.hpp"
+#include "Stack.h"
+#include "utils.h"
 
 using namespace std;
 

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdlib.h>
 
-#include "Polonese.hpp"
+#include "Polonese.h"
 
 using namespace std;
 
