@@ -4,26 +4,6 @@
 
 using namespace std;
 
-/* 
-1 -> + and -
-2 -> / and *
-3 -> ^
-4 -> () //restart to 0
-
-*/
-/*
-typedef struct stack{
-	int top;
-	char theStack[100];
-}char_stack;
-
-typedef struct stack2{
-	int top;
-	double theStack[100];
-}double_stack;
-*/
-
-
 struct char_stack{
 	char value;
 	char_stack *last;
@@ -43,14 +23,6 @@ char_stack *removeStackChar(char_stack *stack);
 
 //say if one stack is empty or not
 bool isStackEmptyChar(char_stack *stack);
-
-//test if the operator is greater than the stack
-//return true if yes
-//return false if not
-bool testOperator(char_stack *stack, char op);
-
-//return the value of priority of an operator
-int valueOperator(char op);
 
 double_stack *newStackDouble();
 

@@ -34,40 +34,6 @@ char_stack *removeStackChar(char_stack *stack) {
 	return stack;
 }
 
-bool testOperator(char_stack *stack, char op) {
-	if(isStackEmptyChar(stack)) {
-		return false;
-	}
-	int value = valueOperator(op);
-	return (value > valueOperator(stack->value)) || (value == 0);
-}
-
-int valueOperator(char op) {
-	
-	switch(op) {
-		case ')':
-			return -1; //remove the stack until '('
-		case '+':
-		case '-':
-			return 1;
-
-		case '*':
-		case '/':
-			return 2;
-
-		case '^':
-			return 3;
-
-		case '(':
-			return 0;
-
-		default:
-			cout << "ERROR in valueOperator()  " << op <<endl;
-			system("pause");
-			return -1;	
-	}
-}
-
 double_stack *newStackDouble() {
 	double_stack *stack = NULL;
 

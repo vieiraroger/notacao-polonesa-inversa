@@ -9,23 +9,48 @@
 
 using namespace std;
 
-//take a string and make a inverse polonese notation
-string convertToPolonese(string exp);
+class Polonese
+{
+	public:
+		Polonese();
+		Polonese(string s);
+		~Polonese();
 
-//calculate using a inverse polonese exp and return the value
-double calculatePolonese(string exp, double values[], bool has_values);
+		string getPolonese();
 
-//reada file input
-void readInput(string file_name);
+		//take a string and make a inverse polonese notation
+		string convertToPolonese(string exp);
 
-//ask if want to save the output
-void saveOutput(string polonese,double value,double variableValue[]);
+		//calculate using a inverse polonese exp and return the value
+		double calculatePolonese();
 
-//create a file with the output
-void createOutput(string polonese,double value,double variableValue[]);
+		//show in the console the polonese and the value
+		void showResult();
 
-//show in the console the polonese and the value
-void showResult(string polonese,double value,double variableValue[]);
+		//verify if the string can be converted to polonese
+		bool verifyInput(string s);
 
-//verify if the string can be converted to polonese
-bool verifyInput(string s);
+		//reada file input
+		void readInput(string file_name);
+
+		//ask if want to save the output
+		void saveOutput(double value);
+
+		//create a file with the output
+		void createOutput(double value);
+
+		//show in the console the polonese and the value
+		void showResult(double value);
+
+	private:
+		string polonese;
+		bool has_values;
+		double values[52];
+		
+		//test if the operator is greater than the stack
+		bool testOperator(char_stack *stack, char op);
+
+		//return the value of priority of an operator
+		int valueOperator(char op);
+	
+};

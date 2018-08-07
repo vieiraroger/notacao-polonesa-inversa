@@ -12,13 +12,14 @@ void configs();
 
 int main(int argc, char *argv[]) {
 	//variable declaration
-	string exp = "A+B*C"; //cba+*
-	cout << exp;
 	double value;
-	string polonese ="";
 	string input;
 	string save;
 	int cod=0;
+	string polonese = "";
+	string exp = "A+B*C";
+	
+	Polonese *p = new Polonese();
 
 	do {
 		system("cls");
@@ -34,7 +35,7 @@ int main(int argc, char *argv[]) {
 				save = exp;
 				cin >> exp;
 
-				if(!verifyInput(exp)) {
+				if(!p->verifyInput(exp)) {
 					cout << "Expressao invalida" << endl;
 					exp = save;
 					system("pause");
@@ -42,8 +43,8 @@ int main(int argc, char *argv[]) {
 				break;
 			//convert and calculate polonese
 			case 2:
-				polonese = convertToPolonese(exp);
-				value = calculatePolonese(polonese,NULL,false);
+				polonese = p->convertToPolonese(exp);
+				value = p->calculatePolonese();
 				system("pause");
 				break;
 			//open a input file and create a output file
@@ -51,7 +52,7 @@ int main(int argc, char *argv[]) {
 				cout << "Digite o nome do arquivo: " << endl;
 				cout << "Ex: input1.txt" << endl;
 				cin >> input;
-				readInput(input);
+				p->readInput(input);
 
 				system("pause");
 				break;

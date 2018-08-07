@@ -8,7 +8,7 @@ Esse projeto tem como objetivo utilizar conhecimentos adquiridos em algumas disc
 * PIC
 
 ## Informações
-Algumas informações extras e especificas sobre o solftware.
+A principio o solftware foi desenvolvido em C++ com uma divisão de arquivos para cada função, futuramente foi adicionado programação orientadada a objetos na principal bibliteca.
 
 ### Limites
 |Nome|Type|Limites|
@@ -36,6 +36,7 @@ Algumas informações extras e especificas sobre o solftware.
 
 ## Formato Input (file)
 Os inputs não passam por verificação se estão corretos.
+Os arquivos de testos devem conter pelo menos uma letra em sua expressão.
 
 > Expressão<br/>
 > Valores das variaveis<br/>
@@ -50,7 +51,6 @@ Exemplo:
 * [Jackson Belloli](https://github.com/JacksonBelloli)
 * [Gilberto Topanotti](https://github.com/juniortopanotti)
 * [Roger Vieira](https://github.com/rogervieiraa)
-
 
 ## Bibliografias
 * [Video 1](https://www.youtube.com/watch?v=LQ-iW8jm6Mk)
